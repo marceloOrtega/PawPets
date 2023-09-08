@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model Usuario {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  email    String   @unique
+  senha    String
+  pets     Pet[]
+}
+
+model Pet {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  especie  String   // Exemplo: cão, gato, etc.
+  raca     String   // Raça do pet
+  idade    Int      // Idade do pet em meses ou anos
+  usuario  Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId Int?    // ID do usuário ao qual este pet pertence
+  vacinas  Vacina[]
+}
+
+model Vacina {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  descricao String   // Descrição da vacina
+  idadeRecomendada Int // Idade recomendada para a aplicação da vacina (em meses)
+  pet      Pet      @relation(fields: [petId], references: [id])
+  petId    Int      // ID do pet ao qual esta vacina está associada
+}
