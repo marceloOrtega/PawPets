@@ -10,7 +10,7 @@
 - Abrir com VsCode
 - Navegar até o diretório "api" e instale as dependências
 ```bash
-cd PawPets
+cd backend
 npm i
 ```
 - Criar o arquivo **.env** contendo
