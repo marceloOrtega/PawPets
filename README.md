@@ -8,7 +8,7 @@
 ### API
 - Clonar este repositório
 - Abrir com VsCode
-- Navegar até o diretório "api" e instale as dependências
+- Navegar até o diretório "backend" e instale as dependências
 ```bash
 cd backend
 npm i
@@ -25,6 +25,8 @@ prisma migrate dev --name "pet"
 OBS: Antes da migração, deve instalar o ORM prisma Globalmente
 ```
 npm i -g prisma
+
+Caso precise do prisma client: npm install @prisma/client
 ```
 - Caso queira dados de teste, execute o script ./testes/usuarios.sql no banco de Dados
     - Se estiver utilizando o XAMPP copie os dados e cole no PHPMyAdmin
@@ -32,4 +34,6 @@ npm i -g prisma
 - Para executar a API prisma
 ```bash
 nodemon
+ou
+node index.js
 ```
