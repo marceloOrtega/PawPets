@@ -12,8 +12,14 @@ datasource db {
 model Usuario {
   id       Int      @id @default(autoincrement())
   nome     String
-  email    String   @unique
-  senha    String
+  cpf         String
+  email       String   @unique
+  senha       String
+  nascto      DateTime
+  cep         String
+  numero      Int
+  complemento String
+  telefones   String?
   pets     Pet[]
 }
 
@@ -29,10 +35,19 @@ model Pet {
 }
 
 model Vacina {
-  id       Int      @id @default(autoincrement())
-  nome     String
-  descricao String  
-  idadeRecomendada Int 
-  pet      Pet      @relation(fields: [petId], references: [id])
-  petId    Int   
+  id               Int       @id @default(autoincrement())
+  nome             String
+  descricao        String
+  idadeRecomendada Int
+  pet              Pet       @relation(fields: [petId], references: [id])
+  petId            Int
+  doses            DoseVacina[]
+}
+
+model DoseVacina {
+  id          Int       @id @default(autoincrement())
+  numeroDose  Int       
+  intervalo   String   
+  vacina      Vacina    @relation(fields: [vacinaId], references: [id])
+  vacinaId    Int
 }

@@ -1,11 +1,13 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const cors = require('cors');
 
-app.get('/', (req, res) => {
-  res.send('Bem-vindo à minha API na porta 3000!');
-});
+const router = require('./src/routes');
 
-app.listen(port, () => {
-  console.log(`Servidor está rodando na porta ${port}`);
-});
+const app = express()
+app.use(express.json())
+app.use(cors())
+app.use('/', router)
+
+app.listen(3000, () => {
+    console.log("Rodando Tranquilamente nesse computador de 1850")
+})
