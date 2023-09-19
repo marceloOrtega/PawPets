@@ -13,8 +13,7 @@ class Usuario {
       };
       this.telefones = usuario.telefones;
     }
-  
-    // Método estático para criar um novo usuário
+    
     static criarNovoUsuario(usuario) {
       return {
         create: {

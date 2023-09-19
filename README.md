@@ -25,6 +25,10 @@ prisma migrate dev --name "pet"
 OBS: Antes da migração, deve instalar o ORM prisma Globalmente
 ```
 npm i -g prisma
+```
+instale o bcrypt
+```
+npm install bcrypt
 
 Caso precise do prisma client: npm install @prisma/client
 ```

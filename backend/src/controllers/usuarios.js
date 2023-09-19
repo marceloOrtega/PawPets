@@ -1,27 +1,47 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
-// ... outras importações
+const prisma = new PrismaClient();
 
-// Rota de registro de usuário
 const registrarUsuario = async (req, res) => {
   try {
-    const { nome, email, senha } = req.body;
+    const { nome, cpf, email, senha, nascto, cep, numero, complemento, telefones } = req.body;
+
+    if (!nome || !cpf || !email || !senha || !nascto || !cep || !numero || !complemento || !telefones) {
+      return res.status(400).json({ erro: 'Por favor, forneça todos os campos obrigatórios' });
+    }
+
+    const usuarioExistente = await prisma.usuario.findUnique({
+      where: { email },
+    });
+
+    if (usuarioExistente) {
+      return res.status(409).json({ erro: 'Este email já está em uso' });
+    }
 
     const saltRounds = 10;
     const hashedSenha = await bcrypt.hash(senha, saltRounds);
 
-    // Agora, você pode usar o 'hashedSenha' para salvar no banco de dados
-    // Implemente a lógica de inserção no banco de dados aqui
+    const novoUsuario = await prisma.usuario.create({
+      data: {
+        nome,
+        cpf,
+        email,
+        senha: hashedSenha,
+        nascto,
+        cep,
+        numero,
+        complemento,
+        telefones,
+      },
+    });
 
-    res.status(201).json({ mensagem: 'Usuário registrado com sucesso' });
+    res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: novoUsuario });
   } catch (error) {
     console.error('Erro ao registrar usuário:', error);
-    res.status(500).json({ mensagem: 'Erro no servidor' });
+    res.status(500).json({ erro: 'Erro no servidor' });
   }
 };
-// ...
 
 const listar = async (req, res) => {
   try {
@@ -29,7 +49,7 @@ const listar = async (req, res) => {
     res.json(usuarios).end();
   } catch (error) {
     console.error(error);
-    res.status(500).json('Erro ao buscar usuários no banco de dados.').end();
+    res.status(500).json({ erro: 'Erro ao buscar usuários no banco de dados' });
   }
 };
 
@@ -40,49 +60,105 @@ const buscar = async (req, res) => {
     if (usuario) {
       res.json(usuario).end();
     } else {
-      res.status(404).json('Usuário não encontrado.').end();
+      res.status(404).json({ erro: 'Usuário não encontrado' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json('Erro ao buscar usuário no banco de dados.').end();
+    res.status(500).json({ erro: 'Erro ao buscar usuário no banco de dados' });
   }
 };
 
 const atualizar = async (req, res) => {
   try {
-    const { id, nome, email, senha } = req.body;
+    const { id, nome, cpf, email, senha, nascto, cep, numero, complemento, telefones } = req.body;
+
+    const usuarioExistente = await prisma.usuario.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!usuarioExistente) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+
+    const saltRounds = 10;
+    const hashedSenha = await bcrypt.hash(senha, saltRounds);
+
     const usuario = await prisma.usuario.update({
       where: { id: parseInt(id) },
-      data: { nome, email, senha },
+      data: {
+        nome,
+        cpf,
+        email,
+        senha: hashedSenha,
+        nascto,
+        cep,
+        numero,
+        complemento,
+        telefones,
+      },
     });
-    res.status(202).end();
+
+    res.status(202).json({ mensagem: 'Usuário atualizado com sucesso', usuario });
   } catch (error) {
     console.error(error);
-    res.status(500).json('Erro ao atualizar usuário no banco de dados.').end();
+    res.status(500).json({ erro: 'Erro ao atualizar usuário no banco de dados' });
   }
 };
-
 const login = async (req, res) => {
   try {
     const { email, senha } = req.body;
+    
     const usuario = await prisma.usuario.findFirst({
-      where: { email, senha },
+      where: { email },
     });
-    if (usuario) {
-      res.status(202).json(usuario).end();
-    } else {
-      res.status(404).json('Usuário não encontrado.').end();
+
+    if (!usuario) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
+
+    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaCorreta) {
+      return res.status(401).json({ erro: 'Senha incorreta' });
+    }
+
+    res.status(202).json({ mensagem: 'Login bem-sucedido', usuario });
   } catch (error) {
     console.error(error);
-    res.status(500).json('Erro ao realizar login.').end();
+    res.status(500).json({ erro: 'Erro ao realizar login' });
   }
 };
 
+const deletar = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const usuarioExistente = await prisma.usuario.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!usuarioExistente) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+
+    await prisma.usuario.delete({
+      where: { id: parseInt(id) },
+    });
+
+    res.status(200).json({ mensagem: 'Usuário deletado com sucesso' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ erro: 'Erro ao deletar usuário do banco de dados' });
+  }
+};
+
+
+
 module.exports = {
+  registrarUsuario,
   listar,
   buscar,
   atualizar,
   login,
-  registrarUsuario,
+  deletar,
 };

@@ -9,5 +9,5 @@ app.use(cors())
 app.use('/', router)
 
 app.listen(3000, () => {
-    console.log("Rodando Tranquilamente nesse computador de 1850")
+    console.log("Rodando Tranquilamente a API")
 })
