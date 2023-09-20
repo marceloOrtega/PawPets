@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
 
-const registrarUsuario = async (req, res) => {
+const registrarUsuario = async (req, res) => {  
   try {
     const { nome, cpf, email, senha, nascto, cep, numero, complemento, telefones } = req.body;
 
