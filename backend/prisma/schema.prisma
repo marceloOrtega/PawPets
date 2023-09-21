@@ -54,8 +54,8 @@ model DoseVacina {
 
 model Empresa {
   id  Int @id @default(autoincrement())
-  nome 
-  cep
-  numeros
+  nome String
+  cep String
+  numeros Int
 
 }
