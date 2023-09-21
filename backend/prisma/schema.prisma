@@ -51,3 +51,11 @@ model DoseVacina {
   vacina      Vacina    @relation(fields: [vacinaId], references: [id])
   vacinaId    Int
 }
+
+model Empresa {
+  id  Int @id @default(autoincrement())
+  nome 
+  cep
+  numeros
+
+}
