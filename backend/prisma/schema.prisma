@@ -57,5 +57,5 @@ model Empresa {
   nome String
   cep String
   numeros Int
-
+  cidade String
 }
