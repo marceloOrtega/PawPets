@@ -52,10 +52,3 @@ model DoseVacina {
   vacinaId    Int
 }
 
-model Empresa {
-  id  Int @id @default(autoincrement())
-  nome String
-  cep String
-  numeros Int
-  cidade String
-}
