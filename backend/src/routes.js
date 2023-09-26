@@ -6,12 +6,11 @@ const Pets = require('./controllers/pets');
 const Vacinas = require('./controllers/vacinas');
 
 router.get('/', (req, res) => { res.json('Sistema Online').end() });
-router.post('/registrar', Usuarios.registrarUsuario);
+
+router.post('/registrar', Usuarios.cadastrar);
 router.get('/usuarios', Usuarios.listar);
 router.get('/buscar/:id', Usuarios.buscar);
-router.put('/usuarios/atualizar', Usuarios.atualizar);
 router.post('/login', Usuarios.login);
-router.delete('/usuarios/:id', Usuarios.deletar);
 
 router.get('/pets', Pets.listarPets);
 router.get('/pets/buscar/:id', Pets.buscarPet);
