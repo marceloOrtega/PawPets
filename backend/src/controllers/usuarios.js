@@ -2,51 +2,56 @@ const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
-
-const cadastrar = async (req, res) => {  
+const cadastrar = async (req, res) => {
   try {
-    const { nome, cpf, email, senha, nascto, cep, numero, complemento, telefones } = req.body;
+    const { nome, nascto, cpf, cep, estado, cidade, endereco, telefone, email, senha } = req.body;
 
-    if (!nome || !cpf || !email || !senha || !nascto || !cep || !numero || !complemento || !telefones) {
+    if (!nome || !nascto || !cpf || !cep || !estado || !cidade || !endereco || !telefone || !email || !senha) {
       return res.status(400).json({ erro: 'Por favor, forneça todos os campos obrigatórios' });
     }
 
     const usuarioExistente = await prisma.usuario.findUnique({
-      where: { email },
+      where: { cpf },
     });
 
     if (usuarioExistente) {
-      return res.status(409).json({ erro: 'Este email já está em uso' });
+      return res.status(409).json({ erro: 'Este CPF já está em uso' });
     }
 
     const saltRounds = 10;
     const hashedSenha = await bcrypt.hash(senha, saltRounds);
 
+    const [dia, mes, ano] = nascto.split('/');
+    const dataNascimentoISO = `${ano}-${mes}-${dia}`;
+
     const novoUsuario = await prisma.usuario.create({
       data: {
         nome,
+        nascto: new Date(dataNascimentoISO),
         cpf,
+        cep,
+        estado,
+        cidade,
+        endereco,
+        telefone,
         email,
         senha: hashedSenha,
-        nascto,
-        cep,
-        numero,
-        complemento,
-        telefones,
       },
     });
 
-    res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: novoUsuario });
+    const formattedNascto = novoUsuario.nascto.toISOString().split('T')[0];
+    res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: { ...novoUsuario, nascto: formattedNascto } });
   } catch (error) {
     console.error('Erro ao registrar usuário:', error);
-    res.status(500).json({ erro: 'Erro no servidor' });
+    res.status(500).json({ erro: 'Erro no servidor ao registrar usuário' });
   }
 };
+
 
 const listar = async (req, res) => {
   try {
     const usuarios = await prisma.usuario.findMany();
-    res.json(usuarios).end();
+    res.json(usuarios);
   } catch (error) {
     console.error(error);
     res.status(500).json({ erro: 'Erro ao buscar usuários no banco de dados' });
@@ -58,7 +63,7 @@ const buscar = async (req, res) => {
     const { id } = req.params;
     const usuario = await prisma.usuario.findUnique({ where: { id: parseInt(id) } });
     if (usuario) {
-      res.json(usuario).end();
+      res.json(usuario);
     } else {
       res.status(404).json({ erro: 'Usuário não encontrado' });
     }
@@ -67,10 +72,11 @@ const buscar = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao buscar usuário no banco de dados' });
   }
 };
+
 const login = async (req, res) => {
   try {
     const { email, senha } = req.body;
-    
+
     const usuario = await prisma.usuario.findFirst({
       where: { email },
     });
@@ -91,8 +97,6 @@ const login = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao realizar login' });
   }
 };
-
-
 
 module.exports = {
   cadastrar,
