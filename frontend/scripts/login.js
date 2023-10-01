@@ -22,14 +22,19 @@ loginButton.addEventListener('click', () => {
     },
     body: JSON.stringify({ email, senha }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Erro de rede.');
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.mensagem === 'Login bem-sucedido') {
         // Alerta de login bem-sucedido
         alert('Login bem-sucedido!');
 
-        // Redirecionar ou realizar outras ações após o login bem-sucedido.
-        console.log('Login bem-sucedido:', data.usuario);
+        // Redirecionar para a página de home.html após o login bem-sucedido
+        window.location.href = 'home.html';
       } else if (data.erro === 'Senha incorreta') {
         // Tratar erro de senha incorreta
         alert('Senha incorreta. Por favor, verifique sua senha e tente novamente.');
@@ -39,6 +44,8 @@ loginButton.addEventListener('click', () => {
       }
     })
     .catch((error) => {
-      console.error('Erro ao realizar login:', error);
+      console.error('Erro ao realizar login:', error.message);
+      alert('Erro ao realizar login. Por favor, tente novamente mais tarde.');
     });
 });
+  
