@@ -25,6 +25,9 @@ loginButton.addEventListener('click', () => {
     .then((response) => response.json())
     .then((data) => {
       if (data.mensagem === 'Login bem-sucedido') {
+        // Alerta de login bem-sucedido
+        alert('Login bem-sucedido!');
+
         // Redirecionar ou realizar outras ações após o login bem-sucedido.
         console.log('Login bem-sucedido:', data.usuario);
       } else if (data.erro === 'Senha incorreta') {

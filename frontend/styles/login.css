@@ -115,7 +115,7 @@ input {
     font-family: 'Josefin Sans', sans-serif;
     background-color: rgba(255, 255, 255, 0.281);
     outline: none;
-    color: gray;
+    color: rgb(0, 0, 0);
     box-shadow: 0px 2.5px 2.5px rgba(27, 27, 27, 0.562);
 } 
 

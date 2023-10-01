@@ -1,12 +1,12 @@
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcrypt');
-
 const prisma = new PrismaClient();
+
 const cadastrar = async (req, res) => {
   try {
-    const { nome, nascto, cpf, cep, estado, cidade, endereco, telefone, email, senha } = req.body;
+    const { nome, cpf, cep, rua, numero, complemento, estado, cidade, bairro, telefone, email, senha } = req.body;
 
-    if (!nome || !nascto || !cpf || !cep || !estado || !cidade || !endereco || !telefone || !email || !senha) {
+    if (!nome || !cpf || !cep || !rua || !numero || !estado || !cidade || !bairro || !telefone || !email || !senha) {
       return res.status(400).json({ erro: 'Por favor, forneça todos os campos obrigatórios' });
     }
 
@@ -21,31 +21,30 @@ const cadastrar = async (req, res) => {
     const saltRounds = 10;
     const hashedSenha = await bcrypt.hash(senha, saltRounds);
 
-    const [dia, mes, ano] = nascto.split('/');
-    const dataNascimentoISO = `${ano}-${mes}-${dia}`;
-
     const novoUsuario = await prisma.usuario.create({
       data: {
         nome,
-        nascto: new Date(dataNascimentoISO),
         cpf,
         cep,
+        rua, 
+        numero,
+        complemento,
         estado,
         cidade,
-        endereco,
+        bairro,
         telefone,
         email,
         senha: hashedSenha,
       },
     });
 
-    const formattedNascto = novoUsuario.nascto.toISOString().split('T')[0];
-    res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: { ...novoUsuario, nascto: formattedNascto } });
+    res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: novoUsuario });
   } catch (error) {
     console.error('Erro ao registrar usuário:', error);
     res.status(500).json({ erro: 'Erro no servidor ao registrar usuário' });
   }
 };
+
 
 
 const listar = async (req, res) => {

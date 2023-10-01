@@ -4,7 +4,6 @@ const router = express.Router();
 const Usuarios = require('./controllers/usuarios');
 const Pets = require('./controllers/pets');
 const Vacinas = require('./controllers/vacinas');
-const middleware = require('./middleware/validacao  ')
 
 router.get('/', (req, res) => { res.json('Sistema Online').end() });
 

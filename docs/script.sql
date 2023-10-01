@@ -1,16 +1,13 @@
 -- Inserir informações do usuário
-INSERT INTO Usuario (id, nome, nascto, cpf, cep, estado, cidade, endereco, telefone, email, senha)
+INSERT INTO Usuario (id, nome, cpf, cep, rua, numero, complemento, estado, cidade, bairro, telefone, email, senha)
 VALUES
-  (1, 'Marcelo Ortega', '2006-05-16', '78915335635', '13917-490', 'SP', 'Campinas', 'BL03 AP1004', '19992683698, 19991638541', 'marcelinho@email.com', '${senhaMarcelo}'),
-  (2, 'Naldo Benny', '1979-04-19', '8496259359669', '45851-754', 'BA', 'Salvador', 'BL15 AP12', '19995821478', 'emailespecial@email.com', '${senhaNaldo}');
+  (1, 'Marcelo Ortega', '78915335635', '13917-490','Rua Macieira', '225', 'bloco03', 'SP', 'Campinas', 'roseira de cima', '19992683698', 'marcelinho@email.com', '1234');
 
 -- Inserir informações do pet
 INSERT INTO Pet (nome, especie, raca, idade, usuarioId)
 VALUES ('Rex', 'Cão', 'Golden Retriever', 24, 1);
 
 -- Inserir informações de outros pets
-INSERT INTO Pet (nome, especie, raca, idade, usuarioId)
-VALUES ('Mickey', 'Rato', 'Desconhecida', 2, 2);
 
 
 -- Inserir informações das vacinas

@@ -12,12 +12,14 @@ datasource db {
 model Usuario {
   id       Int      @id @default(autoincrement())
   nome     String
-  nascto      DateTime
   cpf      String   @unique
   cep         String
+  rua String
+  numero String
+  complemento String?
   estado   String
   cidade   String   
-  endereco String
+  bairro String
   telefone   String 
   email       String   @unique
   senha       String  
