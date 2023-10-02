@@ -26,7 +26,7 @@ const cadastrar = async (req, res) => {
         nome,
         cpf,
         cep,
-        rua, 
+        rua,
         numero,
         complemento,
         estado,
@@ -41,10 +41,9 @@ const cadastrar = async (req, res) => {
     res.status(201).json({ mensagem: 'Usuário registrado com sucesso', usuario: novoUsuario });
   } catch (error) {
     console.error('Erro ao registrar usuário:', error);
-    res.status(500).json({ erro: 'Erro no servidor ao registrar usuário' });
+    res.status(500).json({ erro: 'Erro interno do servidor ao registrar usuário', detalhes: error.message });
   }
 };
-
 
 
 const listar = async (req, res) => {
