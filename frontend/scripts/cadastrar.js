@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmarSenha = document.querySelector('input[name="confirmarSenha"]').value;
 
     if (!validarCPF(cpf)) {
-      alert("CPF inválido. Por favor, verifique.");
+      alert("CPF inválido. Por favor, insira um cpf válido!");
       return;
     }
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("As senhas não coincidem. Por favor, verifique.");
       return;
     }
-
+    
     try {
       const response = await fetch("http://localhost:3000/cadastrar", {
         method: "POST",
