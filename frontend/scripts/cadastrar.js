@@ -1,43 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const progressBar = document.getElementById("progress-bar");
-    const qtdEtapas = 3; // Número total de etapas
-
-    let etapaAtual = 1; // Começar na primeira etapa
-
-    // Função para atualizar a barra de progresso e iniciar a animação
-    function updateProgressBar() {
-        const barra = document.getElementById("myBar");
-        if(etapaAtual === 1) {
-            barra.style.width = "33.33%"
-            return
-        }
-        if(etapaAtual === 2) {
-            barra.style.width = "66.6%"
-            return
-        }
-
-    }
-
-    // Função para avançar para a próxima etapa
-    function nextStep() {
-        const currentStepElement = document.getElementById("step");
-        etapaAtual = etapaAtual + 1
-        updateProgressBar()
-
-    }
-
-    // Função para voltar para a etapa anterior (opcional)
-    function prevStep() {
-        const currentStepElement = document.getElementById("step");
-
-    }
-
-    // Iniciar na primeira etapa
-    updateProgressBar();
-
-
-});
-document.addEventListener("DOMContentLoaded", function () {
   const cadastroForm = document.getElementById("cadastroForm");
   const cepInput = document.querySelector('input[name="cep"]');
   const ruaInput = document.querySelector('input[name="rua"]');
@@ -51,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const senhaInput = document.querySelector('input[name="senha"]');
   const confirmarSenhaInput = document.querySelector('input[name="confirmarSenha"]');
 
+  // Função para validar o CEP e preencher os campos
   function validaCEP(cep) {
     cep = cep.replace(/\D/g, '');
     if (cep.length === 8) {
@@ -81,24 +43,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
-  // Evento para acionar a função quando o CEP perder o foco
   cepInput.addEventListener('blur', () => {
     const cep = cepInput.value;
     validaCEP(cep);
   });
 
+  
   function validarCPF(cpf) {
+    // Remove tudo exceto números
     cpf = cpf.replace(/\D/g, '');
 
+    // Verifica se há 11 dígitos
     if (cpf.length !== 11) {
       return false;
     }
+
+    // Verifica se todos os dígitos são iguais (número inválido, mas pode passar na validação)
     const primeiroDigito = cpf.charAt(0);
     if (cpf.split('').every(digito => digito === primeiroDigito)) {
       return false;
     }
 
+    // Verifica o primeiro dígito verificador
     let soma = 0;
     for (let i = 0; i < 9; i++) {
       soma += parseInt(cpf.charAt(i)) * (10 - i);
@@ -109,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return false;
     }
 
+    // Verifica o segundo dígito verificador
     soma = 0;
     for (let i = 0; i < 10; i++) {
       soma += parseInt(cpf.charAt(i)) * (11 - i);
@@ -118,13 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (digitoVerificador !== parseInt(cpf.charAt(10))) {
       return false;
     }
+
     return true;
   }
-  if (!validarCPF(cpf)) {
-    alert("CPF inválido. Por favor, verifique.");
-    return;
-  }
-
 
   cadastroForm.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -137,11 +100,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const complemento = complementoInput.value;
     const estado = estadoInput.value;
     const cidade = cidadeInput.value;
-    const bairro = bairroInput.value;
+    const bairro = bairroInput.value; 
     const telefone = document.querySelector('input[name="telefone"]').value;
     const email = document.querySelector('input[name="email"]').value;
     const senha = document.querySelector('input[name="senha"]').value;
     const confirmarSenha = document.querySelector('input[name="confirmarSenha"]').value;
+
+    if (!validarCPF(cpf)) {
+      alert("CPF inválido. Por favor, verifique.");
+      return;
+    }
 
     if (!nome || !cpf || !cep || !rua || !numero || !estado || !cidade || !bairro || !telefone || !email || !senha || !confirmarSenha) {
       alert("Por favor, preencha todos os campos obrigatórios.");
@@ -177,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.status === 201) {
         alert("Usuário cadastrado com sucesso!");
-        window.location.href = 'login.html';
       } else {
         const data = await response.json();
         alert(`Erro ao cadastrar usuário: ${data.erro}`);
