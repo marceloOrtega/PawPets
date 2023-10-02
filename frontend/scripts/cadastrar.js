@@ -48,41 +48,40 @@ document.addEventListener("DOMContentLoaded", function () {
     validaCEP(cep);
   });
 
-  
+  // Função para validar o CPF
   function validarCPF(cpf) {
-    // Remove tudo exceto números
     cpf = cpf.replace(/\D/g, '');
 
-    // Verifica se há 11 dígitos
     if (cpf.length !== 11) {
+      alert("CPF deve conter 11 dígitos.");
       return false;
     }
 
-    // Verifica se todos os dígitos são iguais (número inválido, mas pode passar na validação)
     const primeiroDigito = cpf.charAt(0);
     if (cpf.split('').every(digito => digito === primeiroDigito)) {
+      alert("CPF inválido. Todos os dígitos são iguais.");
       return false;
     }
 
-    // Verifica o primeiro dígito verificador
     let soma = 0;
     for (let i = 0; i < 9; i++) {
       soma += parseInt(cpf.charAt(i)) * (10 - i);
     }
     let resto = soma % 11;
-    let digitoVerificador = resto < 2 ? 0 : 11 - resto;
-    if (digitoVerificador !== parseInt(cpf.charAt(9))) {
+    let digitoVerificador1 = resto < 2 ? 0 : 11 - resto;
+    if (digitoVerificador1 !== parseInt(cpf.charAt(9))) {
+      alert("Primeiro dígito verificador do CPF é inválido.");
       return false;
     }
 
-    // Verifica o segundo dígito verificador
     soma = 0;
     for (let i = 0; i < 10; i++) {
       soma += parseInt(cpf.charAt(i)) * (11 - i);
     }
     resto = soma % 11;
-    digitoVerificador = resto < 2 ? 0 : 11 - resto;
-    if (digitoVerificador !== parseInt(cpf.charAt(10))) {
+    let digitoVerificador2 = resto < 2 ? 0 : 11 - resto;
+    if (digitoVerificador2 !== parseInt(cpf.charAt(10))) {
+      alert("Segundo dígito verificador do CPF é inválido.");
       return false;
     }
 
@@ -107,8 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmarSenha = document.querySelector('input[name="confirmarSenha"]').value;
 
     if (!validarCPF(cpf)) {
-      alert("CPF inválido. Por favor, insira um cpf válido!");
-      return;
+      return; // A validação de CPF já exibiu a mensagem de erro.
     }
 
     if (!nome || !cpf || !cep || !rua || !numero || !estado || !cidade || !bairro || !telefone || !email || !senha || !confirmarSenha) {
