@@ -1,7 +1,6 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-// require("dotenv-safe").config();
-// const jwt = require('jsonwebtoken');
 const router = require('./src/routes');
 
 const app = express()

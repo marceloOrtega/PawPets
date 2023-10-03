@@ -10,6 +10,7 @@ const listarVacinas = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao buscar vacinas no banco de dados' });
   }
 };
+
 module.exports = {
   listarVacinas,
 };

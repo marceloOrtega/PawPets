@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const estadoInput = document.querySelector('input[name="estado"]');
   const cidadeInput = document.querySelector('input[name="cidade"]');
   const bairroInput = document.querySelector('input[name="bairro"]');
-  const telefoneInput = document.querySelector('input[name="telefone"]');
+  const telefoneInput = document.querySelector('input[name="telefone"]'); 
   const emailInput = document.querySelector('input[name="email"]');
   const senhaInput = document.querySelector('input[name="senha"]');
   const confirmarSenhaInput = document.querySelector('input[name="confirmarSenha"]');
