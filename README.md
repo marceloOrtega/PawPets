@@ -4,7 +4,7 @@
 - VsCode
 - NodeJS 16 LTS
 - XAMPP v3.3.0
-- Insomnia
+- InsomniaP
 ### API
 - Clonar este repositório
 - Abrir com VsCode

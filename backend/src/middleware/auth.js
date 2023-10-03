@@ -1,7 +1,7 @@
 // auth.js
 const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = 'sua_chave_secreta'; // Substitua pela sua chave secreta real
+const SECRET_KEY = '*0//*-r+laksffudihhf'; // Substitua pela sua chave secreta real
 
 function createToken(payload) {
   return jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' }); // Token expira em 1 hora

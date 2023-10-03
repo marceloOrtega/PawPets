@@ -22,7 +22,8 @@ model Usuario {
   bairro String
   telefone   String 
   email       String   @unique
-  senha       String  
+  senha       String
+  verificado Boolean @default(false)  
   pets     Pet[]
 }
 
