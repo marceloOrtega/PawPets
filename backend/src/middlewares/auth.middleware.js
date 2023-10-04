@@ -12,10 +12,7 @@ const verificarToken = async (req, res, next) => {
   try {
     const tokenSemBearer = token.replace('Bearer ', '');
     const decoded = jwt.verify(tokenSemBearer, process.env.SECRET_JWT);
-    // O usuário autenticado está disponível em req.usuario
     req.usuario = decoded;
-    // Agora, você pode atualizar o campo 'verificado' no banco de dados para true
-    // Certifique-se de que o nome do campo no banco de dados corresponda ao nome no seu modelo Prisma (no caso, 'verificado')
     await prisma.usuario.update({
       where: { id: decoded.id },
       data: { verificado: true },
