@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // Importe a biblioteca jsonwebtoken
-const auth = require('../middleware/auth'); // Importe o módulo auth que criamos
+const jwt = require('jsonwebtoken'); 
+const services = require('../services/auth.service'); 
 const prisma = new PrismaClient();
 
 const cadastrar = async (req, res) => {
@@ -91,37 +91,22 @@ const login = async (req, res) => {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
 
-    // Se o login for bem-sucedido, crie um token JWT e retorne-o
-    const payload = { id: usuario.id, email: usuario.email }; // Pode incluir mais informações no payload, se necessário
-    const token = auth.createToken(payload);
-    res.status(200).json({ mensagem: 'Login bem-sucedido', token });
+    
+    // const payload = { id: usuario.id, email: usuario.email }; // Pode incluir mais informações no payload, se necessário
+    const token = services.createtoken(usuario.id);
+
+    res.send({token});
   } catch (error) {
     console.error(error);
     res.status(500).json({ erro: 'Erro ao realizar login' });
   }
 };
 
-// const atualizarUsuario = async (req, res) => {
-//   try {
-//     const { id } = req.user; // O objeto de solicitação agora contém o usuário decodificado do token
-//     const { nome, email, telefone } = req.body;
 
-//     const usuarioAtualizado = await prisma.usuario.update({
-//       where: { id },
-//       data: { nome, email, telefone },
-//     });
-
-//     res.status(200).json({ mensagem: 'Usuário atualizado com sucesso', usuario: usuarioAtualizado });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ erro: 'Erro ao atualizar usuário' });
-//   }
-// };
 
 module.exports = {
   cadastrar,
   listar,
   buscar,
   login,
-  // atualizarUsuario
 };

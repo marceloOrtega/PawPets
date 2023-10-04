@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const Usuarios = require('./controllers/usuarios');
-const Pets = require('./controllers/pets');
-const Vacinas = require('./controllers/vacinas');
+const Usuarios = require('./controllers/user.controller');
+const Pets = require('./controllers/pets.controller');
+const Vacinas = require('./controllers/vacinas.controller');
 
 router.get('/', (req, res) => { res.json('Sistema Online').end() });
 
