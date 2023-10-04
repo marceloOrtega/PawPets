@@ -6,14 +6,10 @@ loginButton.addEventListener('click', () => {
   const email = emailInput.value;
   const senha = senhaInput.value;
 
-  // Verifique se os campos de email e senha estão preenchidos
   if (!email || !senha) {
     alert('Por favor, preencha todos os campos.');
-    return; // Impede a execução da solicitação AJAX
+    return; 
   }
-
-  // Aqui você pode fazer a solicitação AJAX para o backend para verificar o login.
-  // Substitua 'URL_DO_BACKEND' pela URL real do seu backend de login.
 
   fetch('http://localhost:3000/login', {
     method: 'POST',
@@ -48,4 +44,3 @@ loginButton.addEventListener('click', () => {
       alert('Erro ao realizar login. Por favor, tente novamente mais tarde.');
     });
 });
-  

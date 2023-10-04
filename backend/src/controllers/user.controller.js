@@ -91,8 +91,6 @@ const login = async (req, res) => {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
 
-    
-    // const payload = { id: usuario.id, email: usuario.email }; // Pode incluir mais informações no payload, se necessário
     const token = services.createtoken(usuario.id);
 
     res.send({token});

@@ -5,5 +5,5 @@ const createtoken = (id) =>
 
 
 module.exports = {
-    createtoken
+    createtoken,
 }
