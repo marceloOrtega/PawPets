@@ -93,12 +93,14 @@ const login = async (req, res) => {
 
     const token = services.createtoken(usuario.id);
 
-    res.send({token});
+    // Agora, você está retornando o token no campo "token" do objeto JSON de resposta.
+    res.status(200).json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ erro: 'Erro ao realizar login' });
   }
 };
+
 
 
 
