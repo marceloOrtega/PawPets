@@ -91,17 +91,21 @@ const login = async (req, res) => {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
 
+    const validation = true;
+
+    if (!validation) {
+      return res.status(401).json({ erro: 'Validação falhou' });
+    }
+
     const token = services.createtoken(usuario.id);
 
-    // Agora, você está retornando o token no campo "token" do objeto JSON de resposta.
-    res.status(200).json({ token });
+    res.status(200).json({ token, validation });
   } catch (error) {
     console.error(error);
     res.status(500).json({ erro: 'Erro ao realizar login' });
   }
 };
-
-
+ 
 
 
 module.exports = {

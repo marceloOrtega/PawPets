@@ -8,7 +8,7 @@ loginButton.addEventListener('click', () => {
 
   if (!email || !senha) {
     alert('Por favor, preencha todos os campos.');
-    return; 
+    return;
   }
 
   fetch('http://localhost:3000/login', {
@@ -25,18 +25,14 @@ loginButton.addEventListener('click', () => {
       return response.json();
     })
     .then((data) => {
-      if (data.mensagem === 'Login bem-sucedido') {
-        // Alerta de login bem-sucedido
-        alert('Login bem-sucedido!');
+      console.log('Resposta do servidor:', data);
 
-        // Redirecionar para a página de home.html após o login bem-sucedido
+      if (data.validation === true) {
+        // A validação foi bem-sucedida, redirecione para 'home.html'
         window.location.href = 'home.html';
-      } else if (data.erro === 'Senha incorreta') {
-        // Tratar erro de senha incorreta
-        alert('Senha incorreta. Por favor, verifique sua senha e tente novamente.');
       } else {
-        // Tratar outros erros de login
-        console.error('Erro de login:', data.erro);
+        // A validação não foi bem-sucedida, exiba uma mensagem de erro
+        alert('A validação não foi bem-sucedida. Por favor, verifique suas credenciais.');
       }
     })
     .catch((error) => {
