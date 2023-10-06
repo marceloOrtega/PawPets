@@ -140,9 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
           senha,
         }),
       });
-
+  
       if (response.status === 201) {
         alert("Usuário cadastrado com sucesso!");
+        // Redirecionar para a página de login após um cadastro bem-sucedido
+        window.location.href = "login.html";
       } else {
         const data = await response.json();
         alert(`Erro ao cadastrar usuário: ${data.erro}`);
