@@ -11,6 +11,17 @@ const listarVacinas = async (req, res) => {
   }
 };
 
+const listarTodasAsDoses = async (req, res) => {
+  try {
+    const doses = await prisma.doseVacina.findMany();
+    res.json(doses);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   listarVacinas,
+  listarTodasAsDoses
+
 };

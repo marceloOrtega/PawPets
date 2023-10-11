@@ -18,6 +18,7 @@ router.get('/recurso-protegido', verificarToken, (req, res) => {
     res.status(200).json({ mensagem: 'Acesso ao recurso protegido concedido', usuario: req.usuario });
   });
 
+  
 router.get('/pets', Pets.listarPets);
 router.get('/pets/buscar/:id', Pets.buscarPet);
 router.post('/pets/cadastrar', Pets.cadastrarPet); 
@@ -25,6 +26,7 @@ router.put('/atualizar/:id', Pets.atualizarPet);
 router.delete('/deletar/:id', Pets.deletarPet); 
 
 router.get('/vacinas', Vacinas.listarVacinas);
+router.get('/doses', Vacinas.listarTodasAsDoses);
 
 
 module.exports = router;

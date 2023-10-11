@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-image: url(../assets/login\ usuario.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    width: 100vw;
+    font-size: 16px;
+}
+
+h1 {
+    background-color: #00000008;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0;
+}
+
+#vaccine-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.vaccine-item {
+    background-color: rgba(255, 255, 255, 0.698);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.2s; /* Adiciona uma transição suave no efeito de escala */
+}
+
+.vaccine-item:hover {
+    transform: scale(1.05); /* Aumenta a escala em 5% quando o mouse passar por cima */
+}
+
+.vaccine-item h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+}
+
+.vaccine-item p {
+    font-size: 0.9em;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.vaccine-description {
+    display: none;
+    margin-top: 10px;
+    font-size: 0.9em;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+}
+
+.vaccine-item.active .vaccine-description {
+    display: block;
+}
+
+/* Adicione outros estilos conforme necessário */

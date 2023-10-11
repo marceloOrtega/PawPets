@@ -31,7 +31,7 @@ VALUES ('Gripe canina', 'Vacina contra doença X. Esta vacina protege contra a g
 
 -- Doses da Vacina Gripe canina
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (1, '2 a 4 semanas após a 1ª dose', 2);
+VALUES (1, '2 a 4 semanas após a 1ª dose', 1);
 
 -- Giárdia
 INSERT INTO Vacina (nome, descricao, idadeRecomendada, petId)
@@ -39,7 +39,7 @@ VALUES ('Giárdia', 'Vacina contra doença Y. Esta vacina protege contra a giár
 
 -- Doses da Vacina Giárdia
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (1, '2 a 4 semanas após a 1ª dose', 3);
+VALUES (1, '2 a 4 semanas após a 1ª dose', 1);
 
 -- Antirrábica
 INSERT INTO Vacina (nome, descricao, idadeRecomendada, petId)
@@ -47,7 +47,7 @@ VALUES ('Antirrábica', 'Vacina contra doença Z. A vacina antirrábica protege 
 
 -- Doses da Vacina Antirrábica
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (1, '1 ano após a última dose', 4);
+VALUES (1, '1 ano após a última dose', 1);
 
 -- Leishmaniose
 INSERT INTO Vacina (nome, descricao, idadeRecomendada, petId)
@@ -55,10 +55,10 @@ VALUES ('Leishmaniose', 'Vacina contra doença W. Esta vacina protege contra a l
 
 -- Doses da Vacina Leishmaniose
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (1, '21 dias após a 1ª dose', 5);
+VALUES (1, '21 dias após a 1ª dose', 1);
 
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (2, '21 dias após a 2ª dose', 5);
+VALUES (2, '21 dias após a 2ª dose', 1);
 
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
-VALUES (3, '1 ano após a última dose', 5);
+VALUES (3, '1 ano após a última dose', 1);
