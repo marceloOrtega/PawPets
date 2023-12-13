@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cadastro de Pet</title>
+</head>
+<body> 
+  <h1>Cadastro de Pet</h1>
+  
+  <form action="/salvar_pet" method="POST">
+    <label for="nome">Nome do Pet:</label>
+    <input type="text" id="nome" name="nome"><br><br>
+    
+    <label for="especie">Espécie:</label>
+    <select id="especie" name="especie">
+        <option value="cachorro">Cachorro</option>
+        <option value="gato">Gato</option>
+        <option value="coelho">Coelho</option>
+        <option value="hamster">Hamster</option>
+        <option value="peixe">Peixe</option>
+        <option value="pássaro">Pássaro</option>
+        <option value="ferret">Furão</option>
+        <option value="tartaruga">Tartaruga</option>
+        <option value="india">Porquinho da índia</option>
+        <option value="gérbil">Gérbil</option>
+        <option value="lagartos">Lagartos</option>
+        <option value="chinchi">Chinchilas</option>
+        <!-- Adicione outras espécies conforme necessário -->
+      </select><br><br>
+    
+    <label for="raca">Raça:</label>
+    <input type="text" id="raca" name="raca"><br><br>
+    
+    <label for="idade">Idade:</label>
+    <input type="text" id="idade" name="idade"><br><br>
+    <!-- Outros campos do formulário (idade, cor, etc.) -->
+    
+    <input type="submit" value="Cadastrar Pet">
+  </form>
+</body>
+</html>
