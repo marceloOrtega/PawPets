@@ -35,6 +35,13 @@ Caso precise do prisma client: npm install @prisma/client
 - Caso queira dados de teste, execute o script ./testes/usuarios.sql no banco de Dados
     - Se estiver utilizando o XAMPP copie os dados e cole no PHPMyAdmin
 
+
+criar arquivo .env na pasta backend e copiar esses arquivos:
+
+DATABASE_URL="mysql://root@localhost:3306/pawpets?schema=public&timezone=UTC"
+
+SECRET_JWT= "39329b2caecd630e1e760a062b459e946df21a52"
+
 - Para executar a API prisma
 ```bash
 nodemon
