@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../assets/login\ usuario.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+    font-size: 16px;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    width: 800px;
+    height: 900px;
+    border: 5px solid white;
+    background-color: rgba(90, 90, 90, 0.24);
+    word-wrap: break-word;
+    padding: 15px;
+}
+
+h1 {
+    display: flex;
+    color: rgb(255, 123, 0);
+    -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: #fff;   
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: xx-large;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+p {
+    display: flex;
+    color: rgb(255, 123, 0);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    border-bottom: 1px solid white;
+    margin-top: 10px;
+}

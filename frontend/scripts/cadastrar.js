@@ -155,3 +155,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+let stepAtual = 1
+const goToStep = (step) => {
+  if(stepAtual === 1 && step === 1) return
+  if(stepAtual === 2 && step === 2) return
+  stepAtual = step
+  const tabelaDePreenchimento = document.querySelector("#tabeladepreenchimento")
+  const stepsFunctions = {
+    1: () => tabelaDePreenchimento.style.animation = 'translateToRight 1s forwards',
+    2: () => tabelaDePreenchimento.style.animation = 'translateToLeft 1s forwards'
+  }
+  stepsFunctions[step]()
+}

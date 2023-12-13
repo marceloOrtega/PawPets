@@ -15,20 +15,26 @@
                 <p>Cadastro de Usuário</p>
             </div>
             <form id="cadastroForm" method="POST">
+                    <span class="arrow arrowLeft" onclick="goToStep(1)"><img src="../assets/arrow-esquerda.png" class="arrows"></span>
+                    <span class="arrow arrowRight" onclick="goToStep(2)"><img src="../assets/arrow-direita.png" class="arrows"></span>
                 <div id="tabeladepreenchimento">
-                    <input class="espaco" type="text" placeholder="Nome" name="nome">
-                    <input type="text" placeholder="CPF" name="cpf" required>
-                    <input class="espaco" type="text" placeholder="CEP" name="cep" required>
-                    <input type="text" placeholder="Rua" name="rua">
-                    <input class="espaco" type="text" placeholder="Número" name="numero">
-                    <input type="text" placeholder="Complemento" name="complemento">
-                    <input type="text" placeholder="Estado" name="estado">
-                    <input class="espaco" type="text" placeholder="Cidade" name="cidade">
-                    <input type="text" placeholder="Bairro" name="bairro">
-                    <input class="espaco" type="text" placeholder="Telefone" name="telefone">
-                    <input type="email" placeholder="Email" name="email" required autocomplete="off">
-                    <input class="espaco" type="password" placeholder="Senha" name="senha" required autocomplete="new-password">
-                    <input type="password" placeholder="Confirmar Senha" name="confirmarSenha" required>
+                    <div class="steps step1">
+                        <input class="espaco" type="text" placeholder="Nome" name="nome">
+                        <input type="text" placeholder="CPF" name="cpf" required>
+                        <input class="espaco" type="text" placeholder="Telefone" name="telefone">
+                        <input type="email" placeholder="Email" name="email" required autocomplete="off">
+                        <input class="espaco" type="password" placeholder="Senha" name="senha" required autocomplete="new-password">
+                        <input type="password" placeholder="Confirmar Senha" name="confirmarSenha" required>
+                    </div>
+                    <div class="steps step2">
+                        <input class="espaco" type="text" placeholder="CEP" name="cep" required>
+                        <input type="text" placeholder="Rua" name="rua">
+                        <input class="espaco" type="text" placeholder="Número" name="numero">
+                        <input type="text" placeholder="Complemento" name="complemento">
+                        <input type="text" placeholder="Estado" name="estado">
+                        <input class="espaco" type="text" placeholder="Cidade" name="cidade">
+                        <input type="text" placeholder="Bairro" name="bairro">
+                    </div>
                 </div>
                 <div id="botao">
                     <button type="submit" id="criarconta">Confirmar</button>

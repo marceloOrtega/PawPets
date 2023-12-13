@@ -62,3 +62,6 @@ VALUES (2, '21 dias após a 2ª dose', 1);
 
 INSERT INTO DoseVacina (numeroDose, intervalo, vacinaId)
 VALUES (3, '1 ano após a última dose', 1);
+
+
+

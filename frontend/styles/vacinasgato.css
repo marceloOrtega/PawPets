@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos específicos para o formulário */
+body {
+    background-image: url(../assets/login\ usuario.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Impede barras de rolagem */
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: rgb(144, 76, 175);
+}
+
+h2 {
+    color: #555;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.vacinas-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.vacina-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.sub-item {
+    background-color: #eaeaea;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Estilos para os links */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
