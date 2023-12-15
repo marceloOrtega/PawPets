@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPets - Cadastro</title>
+    <link rel="stylesheet" href="../styles/cadastrarpet.css"> 
+</head>
+
+<body>
+    <main>
+        <div id="boxgeral">
+            <div id="titulo">
+                <p>Cadastro de Pet</p>
+            </div>
+            <form id="cadastroForm" method="post">
+                <div id="inputs">
+                    <div class="coluna coluna1">
+                        <input type="text" name="especie" placeholder="Espécie" required>
+                        <input type="text" name="raca" placeholder="Raça" required>
+                    </div>
+                    <div class="coluna">
+                        <input type="text" name="nome" placeholder="Nome" required>
+                        <input type="text" name="idade" placeholder="Idade">
+                    </div>
+                </div>
+            </form>
+            <div id="botao">
+                <button type="submit" id="criarconta">Confirmar</button>
+            </div>
+        </div>
+    </main>
+    <script src="../scripts/cadastrarpet.js"></script>
+</body>
+</html>

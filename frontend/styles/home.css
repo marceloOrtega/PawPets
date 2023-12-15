@@ -179,8 +179,19 @@ h1 {
 }
 
 #close-modal {
+    display: flex;
+    position: absolute;
     font-family: 'Josefin Sans', sans-serif;
     padding: 5px;
+    left: 88%;
+    top: 8%;
+    background-color: #271642;
+    border: none;
+}
+
+#cancelar-modal {
+    width: 30px;
+    height: 30px;
 }
 
 #cachorrinho {
@@ -204,16 +215,21 @@ button:hover {
 }
   
 #modal {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    position: fixed;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
    width: 500px;
+   height: 300px;
    max-width: 90%;
-   background-color: #fff;
+   background-color: #271642;
    padding: 1.2rem;
-   border-radius: 0.5rem;
+   border-radius: 50px;
    z-index: 10;
+   flex-direction: column;
 }
   
 #fade, #modal {
@@ -224,10 +240,10 @@ button:hover {
   
 .modal-header {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    align-items: center;
    margin-bottom: 1rem;
-   padding-bottom: 1rem;
+   margin-bottom: 1rem;
    flex-direction: column;
 }
 
@@ -248,17 +264,29 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: larger;
     text-decoration: none;
-    border:  2px solid white;
-    padding: 5px;
-    padding-top: 8px;
 }
 
 .linkmodal {
-    color: black;
-    padding: 5px;
-    border: 1px solid black;
+    width: 170px;
+    height: 45px;
+    color: #271642;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #fd791e;
     margin: 10px;
+    background-color: #fd791e;
+    margin: 20px;
+    border-radius: 50px;
+}
+
+#info {
+    width: auto;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    padding-bottom: 4.5px;
 }
