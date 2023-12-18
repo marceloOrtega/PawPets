@@ -161,6 +161,7 @@ h1 {
     border-radius: 100px;
     border: none;
     background-color: rgb(39, 22, 66);
+    cursor: pointer;
 }
 
 #backlog {
@@ -176,6 +177,7 @@ h1 {
     background-color: rgb(39, 22, 66);
     border: none;
     margin-inline-end: 1%;
+    cursor: pointer;
 }
 
 #close-modal {
@@ -290,3 +292,30 @@ a {
     padding: 10px;
     padding-bottom: 4.5px;
 }
+
+.img-zoom {
+    margin-bottom: 20px;
+    display: flex;  
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: xx-large;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 50px;
+    background-color: #a3a1a12c;
+    transition: transform 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55), background-position 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 500ms linear;
+    background-size: contain;
+    background-position: -250px center;
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  .img-zoom:hover {
+    transform: scale(1.05);
+    background-position: -60px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .img-zoom:active {
+    transform: scale(1);
+    background-position: 500px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
